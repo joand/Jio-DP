@@ -1,4 +1,4 @@
-package fr.joand.singleton;
+package fr.joand.jio.singleton;
 
 /** Java implementation of Singleton
  * 
@@ -15,8 +15,8 @@ public class Singleton {
 	/** The Singleton's data - You can use anything you want here */
 	private Object singletonData;
 	
-	/** The protected constructor - This design pattern is extensible */
-	protected Singleton(){
+	/** The protected constructor */
+	private Singleton(){
 		this.singletonData = null;
 	}
 	/** From outside, the only way to retrieve the Singleton's instance */
@@ -32,7 +32,7 @@ public class Singleton {
 		return this.singletonData;
 	}
 	/** The singletonData's setter */
-	protected void setSingletonData(Object singletonData) {
+	private void setSingletonData(Object singletonData) {
 		this.singletonData = singletonData;
 	}
 	
