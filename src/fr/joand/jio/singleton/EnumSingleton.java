@@ -21,7 +21,15 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package fr.joand.jio.singleton;
 
-/** Source : http://stackoverflow.com/questions/10250799/regarding-singleton-design-pattern
+/** Java implementation of Singleton
+ * 
+ * 	"This design pattern ensure that a class have only one instance."
+ *  
+ *  Source : http://stackoverflow.com/questions/10250799/regarding-singleton-design-pattern
+ *  
+ * 	You can find others design patterns on github
+ *  https://github.com/joand/Jio-DP 
+ * 	@author Joel ANDRIAMANAMPISOA joelandria@gmail.com
  * */
 public enum EnumSingleton {
 	/** Implicitly declared as 
@@ -35,7 +43,7 @@ public enum EnumSingleton {
 		return singletonData;
 	}
 
-	public void setSingletonData(Object singletonData) {
+	private void setSingletonData(Object singletonData) {
 		this.singletonData = singletonData;
 	}
 	

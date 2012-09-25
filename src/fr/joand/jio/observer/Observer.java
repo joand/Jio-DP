@@ -21,6 +21,15 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package fr.joand.jio.observer;
 
+/** Java implementation of Observer
+ * 
+ * 	"Define a one-to-many dependency between objects so that when one object changes state, all its 
+ *  dependents are notified and updated automatically."
+ * 
+ * 	You can find others Java implementation of design patterns on github
+ *  https://github.com/joand/Jio-DP 
+ * 	@author Joel ANDRIAMANAMPISOA joelandria@gmail.com
+ * */
 public interface Observer {
 	public void update();
 

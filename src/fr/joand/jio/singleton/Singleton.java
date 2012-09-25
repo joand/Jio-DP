@@ -23,7 +23,7 @@ package fr.joand.jio.singleton;
 
 /** Java implementation of Singleton
  * 
- * 	This design pattern ensure that a class have only one instance.
+ * 	"This design pattern ensure that a class have only one instance." 
  * 
  * 	You can find others design patterns on github
  *  https://github.com/joand/Jio-DP 
