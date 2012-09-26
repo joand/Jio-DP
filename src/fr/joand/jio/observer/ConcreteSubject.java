@@ -63,6 +63,7 @@ public class ConcreteSubject implements Subject {
 	// Observers must not access this method, only controllers can (MVC)
 	private void setState(Object state) {
 		this.state = state;
+		notifyObservers();
 	}
 
 }
