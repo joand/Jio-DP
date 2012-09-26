@@ -19,43 +19,22 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package fr.joand.jio;
+package fr.joand.jio.adapter;
 
-import fr.joand.jio.adapter.Client;
-import fr.joand.jio.observer.ConcreteObserver;
-import fr.joand.jio.observer.ConcreteSubject;
-import fr.joand.jio.observer.Subject;
-import fr.joand.jio.singleton.EnumSingleton;
-import fr.joand.jio.singleton.Singleton;
+/** Java implementation of Adapter
+ * 
+ * 	"Convert the interface of a class into another interface clients expect. Adapter lets classes
+ *  work together that couldn't otherwise because of incompatible interfaces." 
+ * 
+ * 	You can find others design patterns on github
+ *  https://github.com/joand/Jio-DP 
+ * 	@author Joel ANDRIAMANAMPISOA joelandria@gmail.com
+ * */
+public class AdapterInheritance extends Adaptee implements Target{
 
-public class Main {
-
-	/**	I will use the main method to showcase how I use the design patterns (in a really
-	 *  simplistic way ...)
-	 * 
-	 * 	@author Joel ANDRIAMANAMPISOA joelandria@gmail.com
-	 * 	@param args
-	 */
-	public static void main(String[] args) {
-		// ADAPTER
-		Client client = new Client();
-		client.getTarget().request();
-		
-		// OBSERVER
-		Subject subject = new ConcreteSubject();
-		for(int index = 0; index < 3; index++){
-			// This method will also setSubject(...)
-			subject.attach(new ConcreteObserver());
-		}
-		
-		subject.notifyObservers();
-		
-		// SINGLETON
-		Singleton singleton = Singleton.getInstance();
-		singleton.singletonOperation("SomeData");
-		
-		EnumSingleton enumSingleton = EnumSingleton.INSTANCE;
-		enumSingleton.singletonOperation("SomeData");
+	@Override
+	public void request() {
+		specificRequest();
 	}
 
 }
