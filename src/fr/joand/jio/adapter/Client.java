@@ -18,36 +18,41 @@ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVI
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER 
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 package fr.joand.jio.adapter;
 
-/** Java implementation of Adapter
+/**
+ * Java implementation of Adapter
  * 
- * 	"Convert the interface of a class into another interface clients expect. Adapter lets classes
- *  work together that couldn't otherwise because of incompatible interfaces." 
+ * "Convert the interface of a class into another interface clients expect.
+ * Adapter lets classes work together that couldn't otherwise because of
+ * incompatible interfaces."
  * 
- * 	You can find others design patterns on github
- *  https://github.com/joand/Jio-DP 
- * 	@author Joel ANDRIAMANAMPISOA joelandria@gmail.com
+ * You can find others design patterns on github https://github.com/joand/Jio-DP
+ * 
+ * @author Joel ANDRIAMANAMPISOA joelandria@gmail.com
  * */
 public class Client {
 	private Target target;
-	
-	public Client(){
+
+	public Client() {
 		target = new AdapterComposition();
 		// or
 		target = new AdapterInheritance();
 	}
 
 	public Client(Target target) {
+		System.out.println("Client(Target target)");
 		setTarget(target);
 	}
 
 	public Target getTarget() {
+		System.out.println("Client getTarget()");
 		return target;
 	}
 
 	private void setTarget(Target target) {
+		System.out.println("Client setTarget(Target target)");
 		this.target = target;
 	}
 }
