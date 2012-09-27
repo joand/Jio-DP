@@ -18,37 +18,45 @@ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVI
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER 
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 package fr.joand.jio.singleton;
 
-/** Java implementation of Singleton
+/**
+ * Java implementation of Singleton
  * 
- * 	"This design pattern ensure that a class have only one instance."
- *  
- *  Source : http://stackoverflow.com/questions/10250799/regarding-singleton-design-pattern
- *  
- * 	You can find others design patterns on github
- *  https://github.com/joand/Jio-DP 
- * 	@author Joel ANDRIAMANAMPISOA joelandria@gmail.com
+ * "This design pattern ensure that a class have only one instance."
+ * 
+ * Source :
+ * http://stackoverflow.com/questions/10250799/regarding-singleton-design
+ * -pattern
+ * 
+ * You can find others design patterns on github https://github.com/joand/Jio-DP
+ * 
+ * @author Joel ANDRIAMANAMPISOA joelandria@gmail.com
  * */
 public enum EnumSingleton {
-	/** Implicitly declared as 
-	 * 	public static final EnumSingleton
+	/**
+	 * Implicitly declared as public static final EnumSingleton
 	 * */
 	INSTANCE;
-	
+
 	private Object singletonData;
 
 	public Object getSingletonData() {
+		System.out.println("EnumSingleton getSingletonData()");
 		return singletonData;
 	}
 
 	private void setSingletonData(Object singletonData) {
+		System.out
+				.println("EnumSingleton setSingletonData(Object singletonData)");
 		this.singletonData = singletonData;
 	}
-	
+
 	/** Operation(s) on singletonData */
-	public void singletonOperation(Object singletonData){
+	public void singletonOperation(Object singletonData) {
+		System.out
+				.println("EnumSingleton singletonOperation(Object singletonData)");
 		// Do whatever you want here
 		this.setSingletonData(singletonData);
 	}
