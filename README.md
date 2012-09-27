@@ -7,10 +7,17 @@ Java implementation of Design Patterns :
 * Observer (Dependents, Publish-Subscribe)
 * Singleton
 
+The project's purpose
+=======
+
+I started this project to learn and to keep it as a reminder for later use.
+
+
 License
 =======
 
 Copyright (c) 2012, Joel ANDRIAMANAMPISOA joelandria@gmail.com
+
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted

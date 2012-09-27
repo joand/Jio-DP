@@ -18,44 +18,68 @@ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVI
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER 
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 package fr.joand.jio;
 
+import fr.joand.jio.adapter.AdapterComposition;
+import fr.joand.jio.adapter.AdapterInheritance;
 import fr.joand.jio.adapter.Client;
+import fr.joand.jio.adapter.Target;
 import fr.joand.jio.observer.ConcreteObserver;
 import fr.joand.jio.observer.ConcreteSubject;
 import fr.joand.jio.observer.Subject;
 import fr.joand.jio.singleton.EnumSingleton;
+import fr.joand.jio.singleton.Foo;
 import fr.joand.jio.singleton.Singleton;
 
 public class Main {
 
-	/**	I will use the main method to showcase how I use the design patterns (in a really
-	 *  simplistic way ...)
+	/**
+	 * I will use the main method to showcase how I use the design patterns (in
+	 * a really simplistic way ...)
 	 * 
-	 * 	@author Joel ANDRIAMANAMPISOA joelandria@gmail.com
-	 * 	@param args
+	 * @author Joel ANDRIAMANAMPISOA joelandria@gmail.com
+	 * @param args
 	 */
 	public static void main(String[] args) {
 		// ADAPTER
-		Client client = new Client();
+		System.out.println("********* ADAPTER *********\n");
+
+		Target target = new AdapterComposition();
+		Client client = new Client(target);
 		client.getTarget().request();
-		
+
+		target = new AdapterInheritance();
+		client = new Client(target);
+		client.getTarget().request();
+
 		// OBSERVER
+		System.out.println("********* OBSERVER *********\n");
+
 		Subject subject = new ConcreteSubject();
-		for(int index = 0; index < 3; index++){
+		for (int index = 0; index < 3; index++) {
 			// This method will also setSubject(...)
 			subject.attach(new ConcreteObserver());
 		}
-		
+
 		subject.notifyObservers();
-		
+
 		// SINGLETON
-		Singleton singleton = Singleton.getInstance();
+		System.out.println("********* SINGLETON *********\n");
+
+		Foo foo = new Foo();
+		
+		Singleton singleton = foo.getInstance();
 		singleton.singletonOperation("SomeData");
+
+		// This cannont be done : 
+		// singleton = new Singleton();
 		
 		EnumSingleton enumSingleton = EnumSingleton.INSTANCE;
 		enumSingleton.singletonOperation("SomeData");
+
+		// This cannont be done : 		
+		// enumSingleton = new EnumSingleton();
 	}
 
 }
