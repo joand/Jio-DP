@@ -18,50 +18,57 @@ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVI
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER 
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 package fr.joand.jio.observer;
 
-/** Java implementation of Observer
+/**
+ * Java implementation of Observer
  * 
- * 	"Define a one-to-many dependency between objects so that when one object changes state, all its 
- *  dependents are notified and updated automatically."
+ * "Define a one-to-many dependency between objects so that when one object
+ * changes state, all its dependents are notified and updated automatically."
  * 
- * 	You can find others Java implementation of design patterns on github
- *  https://github.com/joand/Jio-DP 
- * 	@author Joel ANDRIAMANAMPISOA joelandria@gmail.com
+ * You can find others Java implementation of design patterns on github
+ * https://github.com/joand/Jio-DP
+ * 
+ * @author Joel ANDRIAMANAMPISOA joelandria@gmail.com
  * */
 public class ConcreteSubject implements Subject {
 
 	private Object state = null;
 
 	public ConcreteSubject() {
-
+		System.out.println("ConcreteSubject()");
 	}
 
 	@Override
 	public boolean attach(Observer newObserver) {
+		System.out.println("ConcreteSubject attach(Observer newObserver)");
 		newObserver.setSubject(this);
 		return observers.add(newObserver);
 	}
 
 	@Override
 	public boolean detach(Observer observer) {
+		System.out.println("ConcreteSubject detach(Observer observer)");
 		return observers.remove(observer);
 	}
 
 	@Override
 	public void notifyObservers() {
+		System.out.println("ConcreteSubject notifyObservers()");
 		for (Observer observer : observers) {
 			observer.update();
 		}
 	}
 
 	public Object getState() {
+		System.out.println("ConcreteSubject getState()");
 		return state;
 	}
 
 	// Observers must not access this method, only controllers can (MVC)
 	private void setState(Object state) {
+		System.out.println("ConcreteSubject setState(Object state)");
 		this.state = state;
 		notifyObservers();
 	}

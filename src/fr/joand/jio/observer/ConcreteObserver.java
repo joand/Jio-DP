@@ -18,17 +18,19 @@ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVI
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER 
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 package fr.joand.jio.observer;
 
-/** Java implementation of Observer
+/**
+ * Java implementation of Observer
  * 
- * 	"Define a one-to-many dependency between objects so that when one object changes state, all its 
- *  dependents are notified and updated automatically."
+ * "Define a one-to-many dependency between objects so that when one object
+ * changes state, all its dependents are notified and updated automatically."
  * 
- * 	You can find others Java implementation of design patterns on github
- *  https://github.com/joand/Jio-DP 
- * 	@author Joel ANDRIAMANAMPISOA joelandria@gmail.com
+ * You can find others Java implementation of design patterns on github
+ * https://github.com/joand/Jio-DP
+ * 
+ * @author Joel ANDRIAMANAMPISOA joelandria@gmail.com
  * */
 public class ConcreteObserver implements Observer {
 
@@ -37,22 +39,28 @@ public class ConcreteObserver implements Observer {
 
 	@Override
 	public void update() {
+		System.out.println("ConcreteObserver update()");
 		state = subject.getState();
 	}
 
 	public ConcreteSubject getSubject() {
+		System.out.println("ConcreteSubject getSubject()");
 		return subject;
 	}
 
 	public void setSubject(ConcreteSubject subject) {
+		System.out
+				.println("ConcreteSubject setSubject(ConcreteSubject subject)");
 		this.subject = subject;
 	}
 
 	public Object getState() {
+		System.out.println("ConcreteSubject getState()");
 		return state;
 	}
 
 	public void setState(Object state) {
+		System.out.println("ConcreteSubject setState(Object state)");
 		this.state = state;
 	}
 
