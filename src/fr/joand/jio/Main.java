@@ -29,7 +29,6 @@ import fr.joand.jio.observer.ConcreteObserver;
 import fr.joand.jio.observer.ConcreteSubject;
 import fr.joand.jio.observer.Subject;
 import fr.joand.jio.singleton.EnumSingleton;
-import fr.joand.jio.singleton.Foo;
 import fr.joand.jio.singleton.Singleton;
 
 public class Main {
@@ -67,9 +66,7 @@ public class Main {
 		// SINGLETON
 		System.out.println("********* SINGLETON *********\n");
 
-		Foo foo = new Foo();
-		
-		Singleton singleton = foo.getInstance();
+		Singleton singleton = Singleton.getInstance();
 		singleton.singletonOperation("SomeData");
 
 		// This cannont be done : 

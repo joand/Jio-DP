@@ -26,6 +26,9 @@ package fr.joand.jio.singleton;
  * 
  * "This design pattern ensure that a class have only one instance."
  * 
+ * Source :
+ * http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html
+ * 
  * You can find others design patterns on github https://github.com/joand/Jio-DP
  * 
  * @author Joel ANDRIAMANAMPISOA joelandria@gmail.com
@@ -35,10 +38,27 @@ public class Singleton {
 	/** The Singleton's data - You can use anything you want here */
 	private Object singletonData;
 
+	/** The Singleton's single instance */
+	private static volatile Singleton instance = null;
+
 	/** The not so visible constructor */
-	Singleton() {
+	private Singleton() {
 		System.out.println("Singleton()");
 		this.singletonData = null;
+	}
+
+	/** From outside, the only way to retrieve the Singleton's instance */
+	public static Singleton getInstance() {
+		System.out.println("Singleton getInstance()");
+		if (instance == null) {
+			synchronized (Singleton.class) {
+				if (instance == null) {
+					System.out.println("Singleton instance = new Singleton()");
+					instance = new Singleton();
+				}
+			}
+		}
+		return instance;
 	}
 
 	/** The singletonData's getter */
