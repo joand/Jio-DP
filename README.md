@@ -10,7 +10,7 @@ Java implementation of Design Patterns :
 The project's purpose
 =======
 
-I started this project to learn and to keep it as a reminder for later use.
+I started this project to learn POJO (Plain Old Java Object) and to keep it as a reminder for later use.
 
 
 License
