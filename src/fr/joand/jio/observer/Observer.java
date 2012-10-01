@@ -36,4 +36,6 @@ public interface Observer {
 	public void update();
 
 	public void setSubject(ConcreteSubject subject);
+
+	public Thread getThread();
 }

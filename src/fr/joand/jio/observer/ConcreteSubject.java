@@ -21,6 +21,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package fr.joand.jio.observer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Java implementation of Observer
  * 
@@ -34,10 +37,14 @@ package fr.joand.jio.observer;
  * */
 public class ConcreteSubject implements Subject {
 
-	private Object state = null;
+	private List<Observer> observers;
+
+	private Object state;
 
 	public ConcreteSubject() {
 		System.out.println("ConcreteSubject()");
+		observers = new ArrayList<Observer>();
+		state = null;
 	}
 
 	@Override
@@ -57,7 +64,8 @@ public class ConcreteSubject implements Subject {
 	public void notifyObservers() {
 		System.out.println("ConcreteSubject notifyObservers()");
 		for (Observer observer : observers) {
-			observer.update();
+			// observer.update();
+			observer.getThread().start();
 		}
 	}
 
@@ -71,6 +79,12 @@ public class ConcreteSubject implements Subject {
 		System.out.println("ConcreteSubject setState(Object state)");
 		this.state = state;
 		notifyObservers();
+	}
+
+	@Override
+	public List<Observer> getObservers() {
+		System.out.println("ConcreteSubject getObservers()");
+		return this.observers;
 	}
 
 }

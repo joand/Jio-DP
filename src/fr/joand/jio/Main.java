@@ -27,6 +27,7 @@ import fr.joand.jio.adapter.Client;
 import fr.joand.jio.adapter.Target;
 import fr.joand.jio.observer.ConcreteObserver;
 import fr.joand.jio.observer.ConcreteSubject;
+import fr.joand.jio.observer.Observer;
 import fr.joand.jio.observer.Subject;
 import fr.joand.jio.singleton.EnumSingleton;
 import fr.joand.jio.singleton.Singleton;
@@ -41,6 +42,8 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		final int observerNb = 3;
+		
 		// ADAPTER
 		System.out.println("********* ADAPTER *********\n");
 
@@ -56,13 +59,21 @@ public class Main {
 		System.out.println("********* OBSERVER *********\n");
 
 		Subject subject = new ConcreteSubject();
-		for (int index = 0; index < 3; index++) {
+		for (int index = 0; index < observerNb; index++) {
 			// This method will also setSubject(...)
-			subject.attach(new ConcreteObserver());
+			subject.attach(new ConcreteObserver("Observer "+index));
 		}
 
 		subject.notifyObservers();
-
+		try {
+			System.out.println("Waiting for threads to finish.");
+			for (Observer observer : subject.getObservers()) {
+				observer.getThread().join();
+			}
+		} catch (InterruptedException e) {
+			System.out.println("Main thread Interrupted : "+e);
+		}
+		
 		// SINGLETON
 		System.out.println("********* SINGLETON *********\n");
 

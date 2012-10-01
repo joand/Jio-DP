@@ -32,36 +32,57 @@ package fr.joand.jio.observer;
  * 
  * @author Joel ANDRIAMANAMPISOA joelandria@gmail.com
  * */
-public class ConcreteObserver implements Observer {
+public class ConcreteObserver implements Observer, Runnable {
+	private String threadName;
+	private Thread thread;
 
 	private ConcreteSubject subject = null;
 	private Object state = null;
 
+	public ConcreteObserver(String threadName) {
+		this.threadName = threadName;
+		this.thread = new Thread(this, this.threadName);
+	}
+
 	@Override
 	public void update() {
-		System.out.println("ConcreteObserver update()");
+		System.out.println("ConcreteObserver " + threadName + " update()");
 		state = subject.getState();
 	}
 
 	public ConcreteSubject getSubject() {
-		System.out.println("ConcreteSubject getSubject()");
+		System.out.println("ConcreteObserver getSubject()");
 		return subject;
 	}
 
 	public void setSubject(ConcreteSubject subject) {
 		System.out
-				.println("ConcreteSubject setSubject(ConcreteSubject subject)");
+				.println("ConcreteObserver setSubject(ConcreteSubject subject)");
 		this.subject = subject;
 	}
 
 	public Object getState() {
-		System.out.println("ConcreteSubject getState()");
+		System.out.println("ConcreteObserver getState()");
 		return state;
 	}
 
 	public void setState(Object state) {
-		System.out.println("ConcreteSubject setState(Object state)");
+		System.out.println("ConcreteObserver setState(Object state)");
 		this.state = state;
+	}
+
+	public String getThreadName() {
+		return threadName;
+	}
+
+	public Thread getThread() {
+		return thread;
+	}
+
+	@Override
+	public void run() {
+		System.out.println("ConcreteObserver " + this.threadName + " run()");
+		this.update();
 	}
 
 }
